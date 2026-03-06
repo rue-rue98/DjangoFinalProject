@@ -85,10 +85,10 @@ django-discussion-board/
 
 Through this project I gained experience with:
 
-(1). Building A Complete Web Application Using Django
-(2). Designing Database Models & Implementing Authentication Systems
-(3). Managing Dynamic Content w/ Django Views & Templates
-(4). Following Clean Code & Maintainable Project Structure Practices
+1. Building A Complete Web Application Using Django
+2. Designing Database Models & Implementing Authentication Systems
+3. Managing Dynamic Content w/ Django Views & Templates
+4. Following Clean Code & Maintainable Project Structure Practices
 
 ---
 
