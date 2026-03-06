@@ -33,42 +33,42 @@ The goal of this project was to go from the basic intro applications to gaining 
 ## Installation & Setup
 
 1. Clone The Repository
-```text
+```
 git clone https://github.com/your-username/django-discussion-board.git cd django-discussion-board
-```text
+```
 
 2. Create & Activate A Virtual Environment
-```text
+```
 python -m venv venv
 source venv/bin/activate    # macOS/Linux
 venv\Scripts\activate       # Windows
-```texct
+```
 
 3. Install Project Dependencies
-```text
+```
 pip install -r requirements.txt
-```text
+```
 
 4. Apply Database Migrations
-```text
+```
 python manage.py migrate
-```text
+```
 
 5. Run The Development Server
-```text
+```
 python manage.py runserver
-```text
+```
 
 6. Open The Application In Your Browser
-```text
+```
 http://127.0.0.1:8000/
-```text
+```
 
 ---
 
 ## Installation & Setup
 
-```text
+```
 django-discussion-board/
 │
 ├── boards/      # App Handling Boards, Topics & Posts
@@ -77,7 +77,7 @@ django-discussion-board/
 ├── static/      # CSS, JavaScript & Images
 ├── manage.py    # Django Management Script
 └── db.sqlite3   # Development Database
-```text
+```
 
 ---
 
