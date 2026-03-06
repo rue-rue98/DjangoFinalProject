@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Discussion Board{% endblock %}</title>
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/custom.css' %}">
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="{% url 'home' %}">Forum</a>
+    <div class="navbar-nav">
+      {% if user.is_authenticated %}
+        <span class="navbar-text mr-3">Hi, {{ user.username }}</span>
+        <a class="nav-item nav-link" href="{% url 'profile' %}">Profile</a>
+        <a class="nav-item nav-link" href="{% url 'logout' %}">Log Out</a>
+      {% else %}
+        <a class="nav-item nav-link" href="{% url 'login' %}">Log In</a>
+        <a class="nav-item nav-link" href="{% url 'signup' %}">Sign Up</a>
+      {% endif %}
+    </div>
+  </nav>
+
+  <div class="container mt-4">
+    {% block content %}{% endblock %}
+  </div>
+</body>
+</html>

@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+
+{% block title %}Logged Out{% endblock %}
+
+{% block content %}
+  <h1 class="mb-3">You Have Been Logged Out.</h1>
+  <p><a href="{% url 'home' %}">Back To Boards</a></p>
+{% endblock %}

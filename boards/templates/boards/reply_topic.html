@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}Reply{% endblock %}
+
+{% block content %}
+  <h1 class="mb-3">Reply To {{ topic.subject }}</h1>
+
+  <form method="post" class="mb-3">
+    {% csrf_token %}
+    <div class="form-group">
+      <label for="id_message">Message</label>
+      {{ form.message }}
+    </div>
+    <button type="submit" class="btn btn-primary">Post Reply</button>
+  </form>
+
+  <p><a href="{% url 'topic_posts' topic.board.pk topic.pk %}">Back To Topic</a></p>
+{% endblock %}

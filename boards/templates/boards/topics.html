@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ board.name }}{% endblock %}
+
+{% block content %}
+  <h1 class="mb-2">{{ board.name }}</h1>
+  <p class="text-muted">{{ board.description }}</p>
+
+  <div class="d-flex flex-wrap align-items-center mb-3">
+    {% if user.is_authenticated %}
+      <a class="btn btn-primary mr-3" href="{% url 'new_topic' board.pk %}">New Topic</a>
+    {% else %}
+      <a class="mr-3" href="{% url 'login' %}">Log In To Start A Topic</a>
+    {% endif %}
+
+    <form method="get" class="form-inline">
+      <input
+        type="text"
+        name="q"
+        value="{{ query }}"
+        class="form-control mr-2"
+        placeholder="Search topics"
+      >
+      <button class="btn btn-outline-secondary" type="submit">Search</button>
+    </form>
+  </div>
+
+  <div class="list-group">
+    {% for topic in page_obj %}
+      <a class="list-group-item list-group-item-action" href="{% url 'topic_posts' board.pk topic.pk %}">
+        <div class="d-flex w-100 justify-content-between">
+          <h5 class="mb-1">{{ topic.subject }}</h5>
+          <small>{{ topic.last_updated }}</small>
+        </div>
+      </a>
+    {% empty %}
+      <div class="alert alert-info">No Topics Yet.</div>
+    {% endfor %}
+  </div>
+
+  {% if page_obj.has_other_pages %}
+    <nav class="mt-3">
+      <ul class="pagination">
+        {% if page_obj.has_previous %}
+          <li class="page-item">
+            <a class="page-link" href="?page={{ page_obj.previous_page_number }}{% if query %}&q={{ query }}{% endif %}">Previous</a>
+          </li>
+        {% else %}
+          <li class="page-item disabled"><span class="page-link">Previous</span></li>
+        {% endif %}
+
+        <li class="page-item active"><span class="page-link">{{ page_obj.number }}</span></li>
+
+        {% if page_obj.has_next %}
+          <li class="page-item">
+            <a class="page-link" href="?page={{ page_obj.next_page_number }}{% if query %}&q={{ query }}{% endif %}">Next</a>
+          </li>
+        {% else %}
+          <li class="page-item disabled"><span class="page-link">Next</span></li>
+        {% endif %}
+      </ul>
+    </nav>
+  {% endif %}
+
+  <p class="mt-3"><a href="/">Back To Boards</a></p>
+{% endblock %}
